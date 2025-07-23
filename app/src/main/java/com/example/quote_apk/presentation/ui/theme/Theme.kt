@@ -1,4 +1,4 @@
-package com.example.quote_apk.ui.theme
+package com.example.quote_apk.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build
