@@ -15,6 +15,7 @@ import androidx.compose.material.icons.filled.Save
 import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -78,17 +79,11 @@ fun QuotesListScreen(
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         floatingActionButton = {
-            IconButton(
-                onClick = {
-                    navController.navigate("saved")
-                },
-                modifier = Modifier.padding(16.dp)
+            FloatingActionButton(
+                onClick = { navController.navigate("saved") },
+                containerColor = MaterialTheme.colorScheme.primary
             ) {
-                Icon(
-                    imageVector = Icons.Default.Bookmarks,
-                    contentDescription = "Saved",
-                    tint = Color.Black
-                )
+                Icon(Icons.Default.Bookmarks, contentDescription = "Saved", tint = Color.White)
             }
         }
     ) { innerPadding ->
@@ -132,7 +127,9 @@ fun QuotesListScreen(
                         rotationZ = animateFloatAsState(offset / 50).value
                     )
             ) {
-                Box() {
+                Box(
+                    contentAlignment = Alignment.Center,
+                ) {
                     Image(
                         painter = painterResource(id = R.drawable.cardbackground),
                         contentDescription = null,
@@ -156,7 +153,7 @@ fun QuotesListScreen(
                         }
 
                         else -> {
-                            QuotesListItem(quote = state.quotes.first())
+                            QuotesListItem(quote = state.quotes.first(),viewModel = viewModel)
                         }
 
                     }

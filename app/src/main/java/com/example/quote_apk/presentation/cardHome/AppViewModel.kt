@@ -30,10 +30,8 @@ fun onEvent(event: CardEvent) {
             viewModelScope.launch {
                 repository.insertQuote(quote = event.quote)
             }
-
         }
         is CardEvent.shareQuote -> {
-
         }
     }
 }
